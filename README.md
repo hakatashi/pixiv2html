@@ -3,6 +3,11 @@ pixiv2html
 
 Converts markuped text of pixiv novel into HTML.
 
+[![Build Status][travis-image]][travis-url]
+
+[travis-image]: https://travis-ci.org/hakatashi/pixiv2html.svg?branch=master
+[travis-url]: https://travis-ci.org/hakatashi/pixiv2html
+
 ## Install
 
     npm install pixiv2html
