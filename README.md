@@ -13,13 +13,11 @@ Converts markuped text of pixiv novel into HTML.
 const pixiv2html = require('pixiv2html');
 
 pixiv2html('[chapter: foo]'); //=> ['<h1>foo</h1>']
-pixiv2html(`
-pixiv
+pixiv2html(`pixiv
 
 is
 [newpage]
-awesome
-`); //=> ['<p>pixiv</p><br><p>is</p>', '<p>awesome</p>']
+awesome`); //=> ['<p>pixiv</p><br><p>is</p>', '<p>awesome</p>']
 ```
 
 ## API
