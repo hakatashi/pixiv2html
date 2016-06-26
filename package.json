@@ -1,18 +1,33 @@
 {
   "name": "pixiv2html",
   "version": "1.0.0",
-  "description": "",
+  "description": "Converts markuped text of pixiv novel into HTML.",
   "main": "index.js",
   "scripts": {
     "build": "lsc -co . .",
     "test": "npm run build && mocha"
   },
+  "files": [
+    "*.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hakatashi/pixiv2html.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "pixiv",
+    "novel",
+    "pixiv novel",
+    "markup",
+    "text",
+    "converter",
+    "HTML"
+  ],
+  "author": {
+    "name": "Koki Takahashi",
+    "email": "hakatasiloving@gmail.com",
+    "url": "https://hakatashi.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hakatashi/pixiv2html/issues"
