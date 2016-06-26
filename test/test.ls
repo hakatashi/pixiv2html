@@ -202,7 +202,7 @@ describe 'Options' ->
     describe 'jump' ->
       It 'customizes the output of [jump] token' ->
         expect pixiv2html '[jump:2]' do
-          transforms: chapter: (page) ->
+          transforms: jump: (page) ->
             expect page .to.equal 2
             """<a>Jump to #page</a>"""
-        .to.deep.equal ['<a>Jump to 2</a>']
+        .to.deep.equal ['<p><a>Jump to 2</a></p>']
