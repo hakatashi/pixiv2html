@@ -8,6 +8,9 @@ It = global.it
 escaping = '(<>\'"&)'
 escaped = '(&lt;&gt;&apos;&quot;&amp;)'
 
+escaping-without-gt = '(<\'"&)'
+escaped-without-gt = '(&lt;&apos;&quot;&amp;)'
+
 # Strip indent and breakline
 strip-indent = (text) -> text.replace /\n\s*/g, ''
 
@@ -68,6 +71,11 @@ describe 'Basic Usage' ->
           </p>
         '''
 
+    It 'escapes HTML special charanters correctly' ->
+      single-match do
+        "[[rb: #escaping-without-gt > #escaping]]"
+        "[[rb: #escaped-without-gt > #escaped]]"
+
   describe '[chapter]' ->
     It 'converts to <h1>' ->
       single-match do
@@ -89,13 +97,18 @@ describe 'Basic Usage' ->
           </h1>
         '''
 
+    It 'escapes HTML special charanters correctly' ->
+      single-match do
+        "[chapter: #escaping]"
+        "[chapter: #escaped]"
+
   describe '[pixivimage]' ->
     It 'converts to <img>' ->
       single-match do
         '[pixivimage: 000001]'
         '''
           <p>
-            <img src="" data-illust-id="000001">
+            <img src="" class="pixivimage" data-illust-id="000001">
           </p>
         '''
 
@@ -122,7 +135,7 @@ describe 'Basic Usage' ->
 
     It 'can contain <ruby>' ->
       single-match do
-        '[[junpuri: pixiv[[rb: 小説 > しょうせつ]] > http://www.pixiv.net/novel/]]'
+        '[[jumpuri: pixiv[[rb: 小説 > しょうせつ]] > http://www.pixiv.net/novel/]]'
         '''
           <p>
             <a href="http://www.pixiv.net/novel/">
@@ -136,3 +149,8 @@ describe 'Basic Usage' ->
             </a>
           </p>
         '''
+
+    It 'escapes HTML special charanters correctly' ->
+      single-match do
+        "[[jumpuri: #escaping-without-gt > #escaping]]"
+        "[[jumpuri: #escaped-without-gt > #escaped]]"
