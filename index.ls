@@ -42,6 +42,12 @@ module.exports = (text) ->
             '</ruby>'
           ].join ''
 
+        | \pixivimage
+          if node.page-number is null
+            """<img src="" class="pixivimage" data-illust-id="#{node.illust-ID}">"""
+          else
+            """<img src="" class="pixivimage" data-illust-id="#{node.illust-ID}" data-page="#{node.page-number}">"""
+
   process = (node) ->
     | Array.is-array node
       for token in node

@@ -114,7 +114,7 @@ describe 'Basic Usage' ->
   describe '[pixivimage]' ->
     It 'converts to <img>' ->
       single-match do
-        '[pixivimage: 000001]'
+        '[pixivimage:000001]'
         '''
           <p>
             <img src="" class="pixivimage" data-illust-id="000001">
@@ -123,7 +123,7 @@ describe 'Basic Usage' ->
 
     It 'can contain page data' ->
       single-match do
-        '[pixivimage: 000001-2]'
+        '[pixivimage:000001-2]'
         '''
           <p>
             <img src="" class="pixivimage" data-illust-id="000001" data-page="2">
