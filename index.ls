@@ -48,11 +48,14 @@ module.exports = (text, {transforms} = {}) ->
           ].join ''
 
         | \jump
-          [
-            """<a href="" class="jump" data-page="#{escape node.page-number}">"""
-            "#{escape node.page-number}ページヘ"
-            '</a>'
-          ].join ''
+          if typeof! transforms.jump is \Function
+            transforms.jump node.page-number
+          else
+            [
+              """<a href="" class="jump" data-page="#{escape node.page-number}">"""
+              "#{escape node.page-number}ページヘ"
+              '</a>'
+            ].join ''
 
         | \jumpuri
           [
