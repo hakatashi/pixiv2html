@@ -43,5 +43,6 @@ module.exports = (text) ->
           current-line.push "<h1>#{escape node.title}</h1>"
 
   serialize root-node
+  reset-line!
 
   return [current-page]
