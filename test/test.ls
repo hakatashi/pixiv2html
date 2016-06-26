@@ -163,3 +163,46 @@ describe 'Basic Usage' ->
       single-match do
         "[[jumpuri: #escaping-without-gt > http://'&]]"
         """<p><a href="http://&#39;&amp;">#escaped-without-gt</a></p>"""
+
+describe 'Options' ->
+  describe 'transforms' ->
+    describe 'chapter' ->
+      It 'customizes the output of [chapter] token' ->
+        expect pixiv2html '[chapter: foobar]' do
+          transforms: chapter: (title) ->
+            expect title .to.equal 'foobar'
+            "<h4>#{title}</h4>"
+        .to.deep.equal ['<h4>foobar</h4>']
+
+      It 'escapes the passing title' ->
+        expect pixiv2html "[chapter: #escaping]" do
+          transforms: chapter: (title) ->
+            expect title .to.equal escaped
+            "<h4>#{title}</h4>"
+        .to.deep.equal ["<h4>#escaped</h4>"]
+
+    describe 'pixivimage' ->
+      It 'customizes the output of [pixivimage] token' ->
+        expect pixiv2html "[pixivimage:000001]" do
+          transforms: pixivimage: (id) ->
+            expect arguments .to.have.length 1
+            expect id .to.equal '000001'
+            """<img src="#id.png">"""
+        .to.deep.equal ["""<p><img src="000001.png"></p>"""]
+
+      It 'customizes the output of [pixivimage] token with page' ->
+        expect pixiv2html "[pixivimage:000001-2]" do
+          transforms: pixivimage: (id, page) ->
+            expect arguments .to.have.length 2
+            expect id .to.equal '000001'
+            expect page .to.equal 2
+            """<img src="#id.#page.png">"""
+        .to.deep.equal ["""<p><img src="000001.2.png"></p>"""]
+
+    describe 'jump' ->
+      It 'customizes the output of [jump] token' ->
+        expect pixiv2html '[jump:2]' do
+          transforms: chapter: (page) ->
+            expect page .to.equal 2
+            """<a>Jump to #page</a>"""
+        .to.deep.equal ['<a>Jump to 2</a>']
