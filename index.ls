@@ -34,7 +34,7 @@ module.exports = (text) ->
 
       for line in lines[1 to]
         send-line!
-        currnt-line.push line
+        current-line.push line
 
     | node.type is \tag
       switch node.name
