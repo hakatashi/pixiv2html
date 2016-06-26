@@ -6,10 +6,10 @@ require! {
 It = global.it
 
 escaping = '(<>\'"&)'
-escaped = '(&lt;&gt;&apos;&quot;&amp;)'
+escaped = '(&lt;&gt;&#39;&quot;&amp;)'
 
 escaping-without-gt = '(<\'"&)'
-escaped-without-gt = '(&lt;&apos;&quot;&amp;)'
+escaped-without-gt = '(&lt;&#39;&quot;&amp;)'
 
 # Strip indent and breakline
 strip-indent = (text) -> text.replace /\n\s*/g, ''
@@ -30,8 +30,8 @@ describe 'Basic Usage' ->
 
     It 'escapes html special characters correctly' ->
       single-match do
-        escaping
-        escaped
+        "#escaping"
+        "<p>#escaped</p>"
 
     It 'converts empty line into <br>' ->
       single-match do
@@ -74,7 +74,16 @@ describe 'Basic Usage' ->
     It 'escapes HTML special charanters correctly' ->
       single-match do
         "[[rb: #escaping-without-gt > #escaping]]"
-        "[[rb: #escaped-without-gt > #escaped]]"
+        '''
+          <p>
+            <ruby>
+              <rb>#escaped-without-gt</rb>
+              <rp>（</rp>
+              <rt>#escaped</rt>
+              <rp>）</rp>
+            </ruby>
+          </p>
+        '''
 
   describe '[chapter]' ->
     It 'converts to <h1>' ->
@@ -100,7 +109,7 @@ describe 'Basic Usage' ->
     It 'escapes HTML special charanters correctly' ->
       single-match do
         "[chapter: #escaping]"
-        "[chapter: #escaped]"
+        '<h1>#escaped</h1>'
 
   describe '[pixivimage]' ->
     It 'converts to <img>' ->
@@ -153,4 +162,4 @@ describe 'Basic Usage' ->
     It 'escapes HTML special charanters correctly' ->
       single-match do
         "[[jumpuri: #escaping-without-gt > #escaping]]"
-        "[[jumpuri: #escaped-without-gt > #escaped]]"
+        """<p><a href="#escaped">#escaped-without-gt</a></p>"""
