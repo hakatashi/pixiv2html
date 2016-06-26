@@ -4,7 +4,7 @@ require! {
   assert
 }
 
-module.exports = (text, {transforms} = {}) ->
+module.exports = (text, {transforms = {}} = {}) ->
   parser = new Parser!
   parser.parse text
   root-node = parser.tree
