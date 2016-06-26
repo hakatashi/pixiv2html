@@ -23,6 +23,11 @@ module.exports = (text) ->
 
     current-line-html := []
 
+  send-page = ->
+    send-line!
+    pages.push current-page
+    current-page := ''
+
   serialize = (node) ->
     | Array.is-array node
       node.map serialize .join ''
@@ -69,10 +74,14 @@ module.exports = (text) ->
           title = serialize node.title
           current-page += "<h1>#{title}</h1>"
 
+        | \newpage
+          send-page!
+
         | otherwise
           current-line-html.push serialize node
 
   process root-node
-  send-line!
 
-  return [current-page]
+  send-page!
+
+  return pages
