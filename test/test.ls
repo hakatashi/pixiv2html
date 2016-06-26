@@ -5,36 +5,47 @@ require! {
 
 It = global.it
 
+escaping = '(<>\'"&)'
+escaped = '(&lt;&gt;&apos;&quot;&amp;)'
+
 # Strip indent and breakline
 strip-indent = (text) -> text.replace /\n\s*/g, ''
 
 # Util to match text with single page
 single-match = (source, dest) ->
-  result = pixiv2html dest
+  result = pixiv2html source
 
   expect result .to.have.length 1
   expect result.0 .to.equal strip-indent dest
 
 describe 'Basic Usage' ->
-  It 'generally wrap unmarkuped text into paragraph' ->
-    expect pixiv2html 'Allo!' .to.deep.equal <[<p>Allo!</p>]>
+  describe 'Plain Text' ->
+    It 'generally wrap unmarkuped text into paragraph' ->
+      single-match do
+        'Allo!'
+        '<p>Allo!</p>'
 
-  It 'converts empty line into <br>' ->
-    single-match do
-      '''
+    It 'escapes html special characters correctly' ->
+      single-match do
+        escaping
+        escaped
 
-        hi
+    It 'converts empty line into <br>' ->
+      single-match do
+        '''
+
+          hi
 
 
-        there
-      '''
-      '''
-        <br>
-        <p>hi</p>
-        <br>
-        <br>
-        <p>there</p>
-      '''
+          there
+        '''
+        '''
+          <br>
+          <p>hi</p>
+          <br>
+          <br>
+          <p>there</p>
+        '''
 
   describe '[newpage]' ->
     It 'splits text into pages array' ->
