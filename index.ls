@@ -4,7 +4,7 @@ require! {
   assert
 }
 
-module.exports = (text) ->
+module.exports = (text, {transforms} = {}) ->
   parser = new Parser!
   parser.parse text
   root-node = parser.tree
@@ -86,7 +86,11 @@ module.exports = (text) ->
         | \chapter
           send-line!
           title = serialize node.title
-          current-page += "<h1>#{title}</h1>"
+
+          if typeof! transforms.chapter is \Function
+            current-page += transforms.chapter title
+          else
+            current-page += "<h1>#{title}</h1>"
 
         | \newpage
           send-page!
