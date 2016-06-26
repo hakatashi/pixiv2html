@@ -12,7 +12,7 @@ module.exports = (text) ->
   current-page = ''
   current-line = []
 
-  reset-line = ->
+  send-line = ->
     line-text = current-line.join ''
 
     if current-line.length isnt 0 and line-text is ''
@@ -33,16 +33,16 @@ module.exports = (text) ->
       current-line.push lines.0
 
       for line in lines[1 to]
-        reset-line!
+        send-line!
         currnt-line.push line
 
     | node.type is \tag
       switch node.name
         | \chapter
-          reset-line!
+          send-line!
           current-line.push "<h1>#{escape node.title}</h1>"
 
   serialize root-node
-  reset-line!
+  send-line!
 
   return [current-page]
