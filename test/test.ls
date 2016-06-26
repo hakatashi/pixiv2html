@@ -56,3 +56,72 @@ describe 'basic Usage' ->
             </ruby>
           </p>
         '''
+
+  describe '[chapter]' ->
+    It 'converts to <h1>' ->
+      single-match do
+        '[chapter: head]'
+        '<h1>head</h1>'
+
+    It 'can contain <ruby>' ->
+      single-match do
+        '[chapter: pixiv[[rb: 小説 > しょうせつ]]]'
+        '''
+          <h1>
+            pixiv
+            <ruby>
+              <rb>小説</rb>
+              <rp>（</rp>
+              <rt>しょうせつ</rt>
+              <rp>）</rp>
+            </ruby>
+          </h1>
+        '''
+
+  describe '[pixivimage]' ->
+    It 'converts to <img>' ->
+      single-match do
+        '[pixivimage: 000001]'
+        '''
+          <p>
+            <img src="" data-illust-id="000001">
+          </p>
+        '''
+
+    It 'can contain page data' ->
+      single-match do
+        '[pixivimage: 000001-2]'
+        '''
+          <p>
+            <img src="" class="pixivimage" data-illust-id="000001" data-page="2">
+          </p>
+        '''
+
+  describe '[jump]' ->
+    It 'converts to <a>' ->
+      single-match do
+        '[jump:2]'
+        '<p><a href="" class="jump" data-page="2">2ページヘ</a></p>'
+
+  describe '[[jumpuri]]' ->
+    It 'converts to <a>' ->
+      single-match do
+        '[[jumpuri: Google > https://google.com/]]'
+        '<p><a href="https://google.com/">Google</a></p>'
+
+    It 'can contain <ruby>' ->
+      single-match do
+        '[[junpuri: pixiv[[rb: 小説 > しょうせつ]] > http://www.pixiv.net/novel/]]'
+        '''
+          <p>
+            <a href="http://www.pixiv.net/novel/">
+              pixiv
+              <ruby>
+                <rb>小説</rb>
+                <rp>（</rp>
+                <rt>しょうせつ</rt>
+                <rp>）</rp>
+              </ruby>
+            </a>
+          </p>
+        '''
