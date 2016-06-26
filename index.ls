@@ -30,11 +30,11 @@ module.exports = (text) ->
     | node.type is \text
       lines = node.val.split /\r?\n/
 
-      current-line.push lines.0
+      current-line.push escape lines.0
 
       for line in lines[1 to]
         send-line!
-        current-line.push line
+        current-line.push escape line
 
     | node.type is \tag
       switch node.name
