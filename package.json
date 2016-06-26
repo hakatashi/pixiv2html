@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/hakatashi/pixiv2html#readme",
   "dependencies": {
-    "html-template-tag": "^1.0.0",
+    "escape-html": "^1.0.3",
     "pixiv-novel-parser": "^0.3.0"
   },
   "devDependencies": {
