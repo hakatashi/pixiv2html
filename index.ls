@@ -62,7 +62,9 @@ module.exports = (text, {transforms} = {}) ->
           ].join ''
 
         | \pixivimage
-          if node.page-number is null
+          if typeof! transforms.pixivimage is \Function
+            transforms.pixivimage node.illust-ID, node.page-number
+          else if node.page-number is null
             """<img src="" class="pixivimage" data-illust-id="#{escape node.illust-ID}">"""
           else
             """<img src="" class="pixivimage" data-illust-id="#{escape node.illust-ID}" data-page="#{escape node.page-number}">"""
