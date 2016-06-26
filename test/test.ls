@@ -109,7 +109,7 @@ describe 'Basic Usage' ->
     It 'escapes HTML special charanters correctly' ->
       single-match do
         "[chapter: #escaping]"
-        '<h1>#escaped</h1>'
+        "<h1>#escaped</h1>"
 
   describe '[pixivimage]' ->
     It 'converts to <img>' ->
