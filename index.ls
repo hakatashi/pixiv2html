@@ -40,7 +40,7 @@ module.exports = (text) ->
       switch node.name
         | \chapter
           send-line!
-          current-line.push "<h1>#{escape node.title}</h1>"
+          current-page += "<h1>#{escape node.title}</h1>"
 
   serialize root-node
   send-line!
