@@ -184,9 +184,9 @@ describe 'Options' ->
     describe 'pixivimage' ->
       It 'customizes the output of [pixivimage] token' ->
         expect pixiv2html "[pixivimage:000001]" do
-          transforms: pixivimage: (id) ->
-            expect arguments .to.have.length 1
+          transforms: pixivimage: (id, page) ->
             expect id .to.equal '000001'
+            expect page .to.equal null
             """<img src="#id.png">"""
         .to.deep.equal ["""<p><img src="000001.png"></p>"""]
 
