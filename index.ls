@@ -10,17 +10,17 @@ module.exports = (text) ->
 
   pages = []
   current-page = ''
-  current-line = []
+  current-line-html = []
 
   send-line = ->
-    line-text = current-line.join ''
+    line-html = current-line-html.join ''
 
-    if current-line.length isnt 0 and line-text is ''
+    if current-line-html.length isnt 0 and line-html is ''
       current-page += '<br>'
-    else if line-text isnt ''
-      current-page += "<p>#{line-text}</p>"
+    else if line-html isnt ''
+      current-page += "<p>#{line-html}</p>"
 
-    current-line := []
+    current-line-html := []
 
   serialize = (node) ->
     | Array.isArray node
@@ -30,11 +30,11 @@ module.exports = (text) ->
     | node.type is \text
       lines = node.val.split /\r?\n/
 
-      current-line.push escape lines.0
+      current-line-html.push escape lines.0
 
       for line in lines[1 to]
         send-line!
-        current-line.push escape line
+        current-line-html.push escape line
 
     | node.type is \tag
       switch node.name
