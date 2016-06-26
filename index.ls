@@ -23,9 +23,21 @@ module.exports = (text) ->
     current-line-html := []
 
   serialize = (node) ->
-    | Array.isArray node
+    | Array.is-array node
+      node.map serialize .join ''
+
+    | node.type is \text
+      node.val
+
+    | node.type is \tag
+      switch node.name
+        | \ruby
+          ''
+
+  process = (node) ->
+    | Array.is-array node
       for token in node
-        serialize token
+        process token
 
     | node.type is \text
       lines = node.val.split /\r?\n/
@@ -40,9 +52,13 @@ module.exports = (text) ->
       switch node.name
         | \chapter
           send-line!
-          current-page += "<h1>#{escape node.title}</h1>"
+          title = serialize node.title
+          current-page += "<h1>#{escape title}</h1>"
 
-  serialize root-node
+        | otherwise
+          current-line-html.push serialize node
+
+  process root-node
   send-line!
 
   return [current-page]
