@@ -47,11 +47,18 @@ module.exports = (text) ->
             '</ruby>'
           ].join ''
 
+        | \jump
+          [
+            """<a href="" class="jump" data-page="#{escape node.page-number}">"""
+            "#{escape node.page-number}ページヘ"
+            '</a>'
+          ].join ''
+
         | \pixivimage
           if node.page-number is null
-            """<img src="" class="pixivimage" data-illust-id="#{node.illust-ID}">"""
+            """<img src="" class="pixivimage" data-illust-id="#{escape node.illust-ID}">"""
           else
-            """<img src="" class="pixivimage" data-illust-id="#{node.illust-ID}" data-page="#{node.page-number}">"""
+            """<img src="" class="pixivimage" data-illust-id="#{escape node.illust-ID}" data-page="#{escape node.page-number}">"""
 
   process = (node) ->
     | Array.is-array node
