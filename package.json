@@ -1,12 +1,12 @@
 {
   "name": "pixiv2html",
-  "version": "1.0.0",
   "description": "Converts markuped text of pixiv novel into HTML.",
   "main": "index.js",
   "scripts": {
     "build": "lsc -co . .",
     "test": "npm run build && mocha && npm run readme",
-    "readme": "test \"$TRAVIS_NODE_VERSION\" != node || readme-assert -p"
+    "readme": "test \"$TRAVIS_NODE_VERSION\" != node || readme-assert -p",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "files": [
     "*.js"
@@ -42,6 +42,7 @@
     "chai": "^3.5.0",
     "livescript": "^1.5.0",
     "mocha": "^2.5.3",
-    "readme-assert": "^4.0.6"
+    "readme-assert": "^4.0.6",
+    "semantic-release": "^4.3.5"
   }
 }
