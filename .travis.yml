@@ -12,7 +12,7 @@ after_success:
   # run `semantic-release` exactly once after all builds pass
   - python travis_after_all.py
   - export $(cat .to_export_back) &> /dev/null
-  - npm run semantic-release
+  - npm run release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
