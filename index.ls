@@ -28,7 +28,7 @@ module.exports = (text) ->
       node.map serialize .join ''
 
     | node.type is \text
-      node.val
+      escape node.val
 
     | node.type is \tag
       switch node.name
@@ -61,7 +61,7 @@ module.exports = (text) ->
         | \chapter
           send-line!
           title = serialize node.title
-          current-page += "<h1>#{escape title}</h1>"
+          current-page += "<h1>#{title}</h1>"
 
         | otherwise
           current-line-html.push serialize node
