@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "lsc -co . .",
+    "test": "npm run build && mocha"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
   "dependencies": {
     "html-template-tag": "^1.0.0",
     "pixiv-novel-parser": "^0.3.0"
+  },
+  "devDependencies": {
+    "livescript": "^1.5.0",
+    "mocha": "^2.5.3"
   }
 }
