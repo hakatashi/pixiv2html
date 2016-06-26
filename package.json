@@ -6,10 +6,10 @@
     "phantom": "mochify test/*.ls --reporter spec --extension .ls --transform browserify-livescript",
     "node": "mochify test/*.ls --reporter spec --extension .ls --transform browserify-livescript --node",
     "readme": "test \"$TRAVIS_NODE_VERSION\" != node || readme-assert -p",
-    "test": "npm run node && npm run phantom && npm run readme",
+    "test": "npm run node && npm run phantom",
     "build": "lsc -co . .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "release": "npm run build && npm run semantic-release"
+    "release": "npm run build && npm run readme && npm run semantic-release"
   },
   "files": [
     "*.js"
