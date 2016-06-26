@@ -15,9 +15,9 @@ single-match = (source, dest) ->
   expect result .to.have.length 1
   expect result.0 .to.equal strip-indent dest
 
-describe 'basic Usage' ->
+describe 'Basic Usage' ->
   It 'generally wrap unmarkuped text into paragraph' ->
-    expect pixiv2html 'Allo!' .to.equal '<p>Allo!</p>'
+    expect pixiv2html 'Allo!' .to.equal <[<p>Allo!</p>]>
 
   It 'converts empty line into <br>' ->
     single-match do
