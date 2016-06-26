@@ -1,6 +1,7 @@
 require! {
   'pixiv-novel-parser': {Parser}
   'escape-html': escape
+  assert
 }
 
 module.exports = (text) ->
@@ -31,8 +32,15 @@ module.exports = (text) ->
 
     | node.type is \tag
       switch node.name
-        | \ruby
-          ''
+        | \rb
+          [
+            '<ruby>'
+            "<rb>#{escape node.ruby-base}</rb>"
+            '<rp>（</rp>'
+            "<rt>#{escape node.ruby-text}</rt>"
+            '<rp>）</rp>'
+            '</ruby>'
+          ].join ''
 
   process = (node) ->
     | Array.is-array node

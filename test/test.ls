@@ -74,7 +74,7 @@ describe 'Basic Usage' ->
     It 'escapes HTML special charanters correctly' ->
       single-match do
         "[[rb: #escaping-without-gt > #escaping]]"
-        '''
+        """
           <p>
             <ruby>
               <rb>#escaped-without-gt</rb>
@@ -83,7 +83,7 @@ describe 'Basic Usage' ->
               <rp>）</rp>
             </ruby>
           </p>
-        '''
+        """
 
   describe '[chapter]' ->
     It 'converts to <h1>' ->
