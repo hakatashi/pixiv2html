@@ -54,6 +54,13 @@ module.exports = (text) ->
             '</a>'
           ].join ''
 
+        | \jumpuri
+          [
+            """<a href="#{escape node.uri}">"""
+            serialize node.title
+            '</a>'
+          ].join ''
+
         | \pixivimage
           if node.page-number is null
             """<img src="" class="pixivimage" data-illust-id="#{escape node.illust-ID}">"""

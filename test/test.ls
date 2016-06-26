@@ -161,5 +161,5 @@ describe 'Basic Usage' ->
 
     It 'escapes HTML special charanters correctly' ->
       single-match do
-        "[[jumpuri: #escaping-without-gt > #escaping]]"
-        """<p><a href="#escaped">#escaped-without-gt</a></p>"""
+        "[[jumpuri: #escaping-without-gt > http://'&]]"
+        """<p><a href="http://&#39;&amp;">#escaped-without-gt</a></p>"""
