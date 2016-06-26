@@ -22,7 +22,7 @@ awesome`); //=> ['<p>pixiv</p><br><p>is</p>', '<p>awesome</p>']
 
 ## API
 
-This API exports a single function such as `pixiv2html = require('pixiv2html')`.
+This API exposes a single function such as `pixiv2html = require('pixiv2html')`.
 
 ### `pixiv2html(text)`
 
