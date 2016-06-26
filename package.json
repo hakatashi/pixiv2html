@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "lsc -co . .",
-    "test": "npm run build && mocha"
+    "test": "npm run build && mocha && npm run readme",
+    "readme": "test \"$TRAVIS_NODE_VERSION\" != node || readme-assert -p"
   },
   "files": [
     "*.js"
@@ -40,6 +41,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "livescript": "^1.5.0",
-    "mocha": "^2.5.3"
+    "mocha": "^2.5.3",
+    "readme-assert": "^4.0.6"
   }
 }
