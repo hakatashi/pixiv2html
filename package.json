@@ -5,6 +5,7 @@
   "scripts": {
     "phantom": "mochify test/*.ls --reporter spec --extension .ls --transform browserify-livescript",
     "node": "mochify test/*.ls --reporter spec --extension .ls --transform browserify-livescript --node",
+    "coverage": "mochify test/*.ls --reporter spec --extension .ls --transform browserify-livescript --plugin [ mochify-istanbul --report text --report text-summary --report lcov --dir ./coverage --exclude \"**/+(test|node_modules)/**/*\" ]",
     "readme": "test \"$TRAVIS_NODE_VERSION\" != node || readme-assert -p",
     "test": "npm run node && npm run phantom",
     "build": "lsc -co . .",
@@ -47,6 +48,7 @@
     "livescript": "^1.5.0",
     "mocha": "^2.5.3",
     "mochify": "^2.18.0",
+    "mochify-istanbul": "^2.4.1",
     "readme-assert": "^4.0.6",
     "semantic-release": "^4.3.5"
   }
