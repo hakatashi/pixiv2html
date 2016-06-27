@@ -4,9 +4,12 @@ pixiv2html
 Converts markuped text of pixiv novel into HTML.
 
 [![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 
 [travis-image]: https://travis-ci.org/hakatashi/pixiv2html.svg?branch=master
 [travis-url]: https://travis-ci.org/hakatashi/pixiv2html
+[coveralls-image]: https://coveralls.io/repos/github/hakatashi/pixiv2html/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/hakatashi/pixiv2html?branch=master
 
 ## Install
 
