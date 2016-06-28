@@ -46,4 +46,5 @@ This API exposes a single function such as `pixiv2html = require('pixiv2html')`.
         * `options.transforms.chapter`: [function(title)]
         * `options.transforms.pixivimage`: [function(illustID, pageNumber)]
         * `options.transforms.jump`: [function(pageNumber)]
+    * `options.type`: [string] String to switch the output to `'html'` or `'xhtml'`. Defaults to `'html'`.
 * **return**: [string[]] Array of pages of converted HTML
