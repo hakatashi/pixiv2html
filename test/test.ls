@@ -164,9 +164,9 @@ describe 'Basic Usage' ->
         "[[jumpuri: #escaping-without-gt > http://'&]]"
         """<p><a href="http://&#39;&amp;">#escaped-without-gt</a></p>"""
 
-describe 'Options' ->
-  describe 'transforms' ->
-    describe 'chapter' ->
+describe 'options' ->
+  describe '.transforms' ->
+    describe '.chapter' ->
       It 'customizes the output of [chapter] token' ->
         expect pixiv2html '[chapter: foobar]' do
           transforms: chapter: (title) ->
@@ -181,7 +181,7 @@ describe 'Options' ->
             "<h4>#{title}</h4>"
         .to.deep.equal ["<h4>#escaped</h4>"]
 
-    describe 'pixivimage' ->
+    describe '.pixivimage' ->
       It 'customizes the output of [pixivimage] token' ->
         expect pixiv2html "[pixivimage:000001]" do
           transforms: pixivimage: (id, page) ->
@@ -199,10 +199,29 @@ describe 'Options' ->
             """<img src="#id.#page.png">"""
         .to.deep.equal ["""<p><img src="000001.2.png"></p>"""]
 
-    describe 'jump' ->
+    describe '.jump' ->
       It 'customizes the output of [jump] token' ->
         expect pixiv2html '[jump:2]' do
           transforms: jump: (page) ->
             expect page .to.equal 2
             """<a>Jump to #page</a>"""
         .to.deep.equal ['<p><a>Jump to 2</a></p>']
+
+  describe '.type' ->
+    describe '=== "html"' ->
+      It 'remains default behavior' ->
+        expect pixiv2html '''
+          foo
+
+          bar
+        ''' type: \html
+        .to.deep.equal ['<p>foo</p><br><p>bar</p>']
+
+    describe '=== "xhtml"' ->
+      It 'converts <br> to <br/>' ->
+        expect pixiv2html '''
+          foo
+
+          bar
+        ''' type: \xhtml
+        .to.deep.equal ['<p>foo</p><br/><p>bar</p>']
