@@ -4,7 +4,7 @@ require! {
   assert
 }
 
-module.exports = (text, {transforms = {}} = {}) ->
+module.exports = (text, {transforms = {}, type = \html} = {}) ->
   parser = new Parser!
   parser.parse text
   root-node = parser.tree
@@ -17,7 +17,10 @@ module.exports = (text, {transforms = {}} = {}) ->
     line-html = current-line-html.join ''
 
     if current-line-html.length isnt 0 and line-html is ''
-      current-page += '<br>'
+      if type is \xhtml
+        current-page += '<br/>'
+      else
+        current-page += '<br>'
     else if line-html isnt ''
       current-page += "<p>#{line-html}</p>"
 
