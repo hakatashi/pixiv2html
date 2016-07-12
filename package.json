@@ -51,7 +51,7 @@
     "mocha": "^2.5.3",
     "mochify": "^2.18.0",
     "mochify-istanbul": "^2.4.1",
-    "readme-assert": "^4.0.6",
+    "readme-assert": "^5.0.0",
     "semantic-release": "^4.3.5"
   }
 }
