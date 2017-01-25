@@ -5,6 +5,7 @@ Converts markuped text of pixiv novel into HTML.
 
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
+[![Greenkeeper badge](https://badges.greenkeeper.io/hakatashi/pixiv2html.svg)](https://greenkeeper.io/)
 
 [travis-image]: https://travis-ci.org/hakatashi/pixiv2html.svg?branch=master
 [travis-url]: https://travis-ci.org/hakatashi/pixiv2html
