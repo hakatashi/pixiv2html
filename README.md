@@ -1,6 +1,8 @@
 pixiv2html
 ==========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hakatashi/pixiv2html.svg)](https://greenkeeper.io/)
+
 Converts markuped text of pixiv novel into HTML.
 
 [![Build Status][travis-image]][travis-url]
