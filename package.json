@@ -49,7 +49,7 @@
     "coveralls": "^2.11.12",
     "livescript": "^1.5.0",
     "mocha": "^3.0.0",
-    "mochify": "^2.18.0",
+    "mochify": "^3.0.0",
     "mochify-istanbul": "^2.4.1",
     "readme-assert": "^5.0.0",
     "semantic-release": "^6.3.2"
