@@ -52,6 +52,6 @@
     "mochify": "^3.0.0",
     "mochify-istanbul": "^2.4.1",
     "readme-assert": "^5.0.0",
-    "semantic-release": "^7.0.1"
+    "semantic-release": "^8.0.0"
   }
 }
