@@ -48,7 +48,7 @@
     "chai": "^4.0.1",
     "coveralls": "^3.0.0",
     "livescript": "^1.5.0",
-    "mocha": "^5.0.0",
+    "mocha": "^6.1.2",
     "mochify": "^4.0.0",
     "mochify-istanbul": "^2.4.1",
     "readme-assert": "^5.0.0",
